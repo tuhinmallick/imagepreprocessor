@@ -37,7 +37,7 @@ mccabe==0.6.1
 more-itertools==7.2.0
 networkx==2.4
 nodeenv==1.3.3
-numpy==1.23.4
+numpy
 opencv-python-headless==4.6.0.66
 packaging==19.2
 pandas==0.25.3
