@@ -15,7 +15,7 @@ black==19.10b0
 blinker==1.4
 boto3==1.10.26
 botocore==1.13.26
-ca-certificates==2022.9.24
+# ca-certificates==2022.9.24
 certifi==2019.9.11
 cfgv==2.0.1
 chardet==3.0.4
