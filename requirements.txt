@@ -2,4 +2,3 @@ albumentations==0.4.3
 numpy==1.23.4
 opencv_python_headless==4.6.0.66
 streamlit==0.52.2
-protobuf==3.20.*
