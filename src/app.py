@@ -87,7 +87,7 @@ def main():
             if error == 0:
                 augmented_image = data["image"]
                 # show title
-                st.title("Demo of Albumentations")
+                st.title("Demo of Augmentation")
 
                 # show the images
                 width_transformed = int(
