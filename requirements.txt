@@ -37,13 +37,13 @@ jmespath==0.9.4
 json5==0.8.4
 jsonschema==3.0.1
 kiwisolver==1.1.0
-ld_impl_linux-64
-libffi
-libgcc-ng==12.2.0
-libgomp==12.2.0
-libsqlite==3.39.4
-libstdcxx-ng==12.2.0
-libzlib==1.2.13
+# ld_impl_linux-64
+# libffi
+# libgcc-ng==12.2.0
+# libgomp==12.2.0
+# libsqlite==3.39.4
+# libstdcxx-ng==12.2.0
+# libzlib==1.2.13
 markupsafe==1.1.1
 matplotlib==3.1.2
 mccabe==0.6.1
