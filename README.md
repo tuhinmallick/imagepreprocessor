@@ -28,6 +28,8 @@ streamlit run src/app.py -- --image_width INT_VALUE_OF_WIDTH
 ```
 
 
+
+
 In your terminal you will see the link to the running local service similar to : 
 ```console
   You can now view your Streamlit app in your browser.
