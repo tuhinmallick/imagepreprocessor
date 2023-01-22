@@ -23,10 +23,11 @@ def get_images_list(path_to_folder: str) -> list:
     Args:
         path_to_folder (str): absolute or relative path to the folder with images
     """
-    image_names_list = [
-        x for x in os.listdir(path_to_folder) if x[-3:] in ["jpg", "peg", "png"]
+    return [
+        x
+        for x in os.listdir(path_to_folder)
+        if x[-3:] in ["jpg", "peg", "png"]
     ]
-    return image_names_list
 
 
 @st.cache
@@ -92,10 +93,7 @@ def fill_placeholders(params: dict, placeholder_params: dict) -> dict:
                     else:
                         params[k].append(element)
             else:
-                if v in placeholder_params:
-                    params[k] = placeholder_params[v]
-                else:
-                    params[k] = v
+                params[k] = placeholder_params.get(v, v)
         params.pop("placeholder")
     return params
 
@@ -105,10 +103,7 @@ def get_params_string(param_values: dict) -> str:
     Args:
         param_values (dict): dict of "param_name" -> "param_value"
     """
-    params_string = ", ".join(
-        [k + "=" + str(param_values[k]) for k in param_values.keys()]
-    )
-    return params_string
+    return ", ".join([f"{k}={str(param_values[k])}" for k in param_values])
 
 
 def get_placeholder_params(image):
@@ -150,9 +145,10 @@ def show_random_params(data: dict, interface_type: str = "Professional"):
     """Shows random params used for transformation (from A.ReplayCompose)"""
     if interface_type == "Professional":
         st.subheader("Random params used")
-        random_values = {}
-        for applied_params in data["replay"]["transforms"]:
-            random_values[
-                applied_params["__class_fullname__"].split(".")[-1]
-            ] = applied_params["params"]
+        random_values = {
+            applied_params["__class_fullname__"].split(".")[
+                -1
+            ]: applied_params["params"]
+            for applied_params in data["replay"]["transforms"]
+        }
         st.write(random_values)

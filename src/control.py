@@ -7,34 +7,34 @@ def select_num_interval(
     param_name: str, limits_list: list, defaults, n_for_hash, **kwargs
 ):
     st.sidebar.subheader(param_name)
-    min_max_interval = st.sidebar.slider(
+    return st.sidebar.slider(
         "",
         limits_list[0],
         limits_list[1],
         defaults,
         key=hash(param_name + str(n_for_hash)),
     )
-    return min_max_interval
 
 
 def select_several_nums(
     param_name, subparam_names, limits_list, defaults_list, n_for_hash, **kwargs
 ):
     st.sidebar.subheader(param_name)
-    result = []
     assert len(limits_list) == len(defaults_list)
     assert len(subparam_names) == len(defaults_list)
 
-    for name, limits, defaults in zip(subparam_names, limits_list, defaults_list):
-        result.append(
-            st.sidebar.slider(
-                name,
-                limits[0],
-                limits[1],
-                defaults,
-                key=hash(param_name + name + str(n_for_hash)),
-            )
+    result = [
+        st.sidebar.slider(
+            name,
+            limits[0],
+            limits[1],
+            defaults,
+            key=hash(param_name + name + str(n_for_hash)),
         )
+        for name, limits, defaults in zip(
+            subparam_names, limits_list, defaults_list
+        )
+    ]
     return tuple(result)
 
 
@@ -70,10 +70,7 @@ def select_RGB(param_name, n_for_hash, **kwargs):
 
 
 def replace_none(string):
-    if string == "None":
-        return None
-    else:
-        return string
+    return None if string == "None" else string
 
 
 def select_radio(param_name, options_list, n_for_hash, **kwargs):
@@ -84,10 +81,9 @@ def select_radio(param_name, options_list, n_for_hash, **kwargs):
 
 def select_checkbox(param_name, defaults, n_for_hash, **kwargs):
     st.sidebar.subheader(param_name)
-    result = st.sidebar.checkbox(
+    return st.sidebar.checkbox(
         "True", defaults, key=hash(param_name + str(n_for_hash))
     )
-    return result
 
 
 # dict from param name to function showing this param
