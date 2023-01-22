@@ -22,13 +22,13 @@ def main():
     # get CLI params: the path to images and image width
     path_to_images, width_original = get_arguments()
     if not os.path.isdir(path_to_images):
-        st.title("There is no directory: " + path_to_images)
+        st.title(f"There is no directory: {path_to_images}")
     else:
         # select interface type
         interface_type = st.sidebar.radio(
             "Select the interface mode", ["Simple", "Professional"]
         )
-        
+
         # select image
         status, image = select_image(path_to_images, interface_type)
         Bbox =  st.sidebar.checkbox('Apply bounding box')
@@ -93,7 +93,7 @@ def main():
                 width_transformed = int(
                     width_original / image.shape[1] * augmented_image.shape[1]
                 )
-                
+
 
                 st.image(image, caption="Original image", width=width_original)
                 st.image(
